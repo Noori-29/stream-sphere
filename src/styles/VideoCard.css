@@ -1,0 +1,23 @@
+/* src/styles/VideoCard.css */
+
+.video-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.video-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.video-card img {
+  width: 100%;
+  height: auto;
+}
+
+.video-card h4 {
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: #333;
+}

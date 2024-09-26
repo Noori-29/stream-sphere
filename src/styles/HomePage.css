@@ -1,0 +1,37 @@
+/* Styles for video grid */
+.video-content {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive columns */
+  gap: 20px; /* Spacing between video cards */
+  justify-content: center;
+}
+
+.video-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for card effect */
+}
+
+.video-card img {
+  width: 100%;
+  height: auto; /* Ensure thumbnail is responsive */
+  object-fit: cover; /* Ensures the image covers the container properly */
+}
+
+.video-info {
+  padding: 15px;
+}
+
+.video-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.video-meta {
+  font-size: 14px;
+  color: #777;
+}

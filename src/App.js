@@ -1,25 +1,51 @@
-import logo from './logo.svg';
+// src/App.js
+
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import VideoPlayerPage from './pages/VideoPlayerPage';
+import Sidebar from './components/Sidebar';
+import axios from 'axios';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [videos, setVideos] = useState([]);
+
+  const fetchVideosByCategory = async (category) => {
+    try {
+      const options = {
+        method: 'GET',
+        url: 'https://youtube-v31.p.rapidapi.com/search',  // Correct API endpoint
+        params: {
+          part: 'snippet',
+          type: 'video',
+          maxResults: 50,
+          q: category, // Using the category as the query
+        },
+        headers: {
+          'x-rapidapi-key': '7590b357e5msh931546f54d50b5bp1e0596jsn38387de05a4d',
+          'x-rapidapi-host': 'youtube-v31.p.rapidapi.com',
+        },
+      };
+
+      const response = await axios.request(options);
+      setVideos(response.data.items); // Update state with fetched videos
+    } catch (error) {
+      console.error('Error fetching category videos', error);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app">
+        <Sidebar fetchVideosByCategory={fetchVideosByCategory} />
+        <Routes>
+          <Route path="/" element={<HomePage videos={videos} setVideos={setVideos} />} />
+          <Route path="/video/:id" element={<VideoPlayerPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

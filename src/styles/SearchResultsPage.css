@@ -1,0 +1,9 @@
+/* src/styles/SearchResultsPage.css */
+
+.search-results-page {
+  padding: 1.5rem;
+}
+
+.search-results-page h2 {
+  margin-bottom: 1rem;
+}

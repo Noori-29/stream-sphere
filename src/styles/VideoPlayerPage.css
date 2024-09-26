@@ -1,0 +1,11 @@
+/* src/styles/VideoPlayerPage.css */
+
+.video-player-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.video-player-page h2 {
+  margin-top: 1rem;
+  color: #333;
+}
